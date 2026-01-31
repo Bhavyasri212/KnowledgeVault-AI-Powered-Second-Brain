@@ -454,10 +454,7 @@ export default function AddKnowledgePage() {
                       Confirm & Save (Cmd+Enter)
                     </>
                   ) : (
-                    <>
-                      <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
-                      Analyze & Review
-                    </>
+                    <>Analyze & Review</>
                   )}
                 </button>
               </div>
