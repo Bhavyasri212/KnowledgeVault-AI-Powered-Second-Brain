@@ -80,7 +80,7 @@ export async function POST(req: Request) {
     if (content) {
       try {
         const model = genAI.getGenerativeModel({
-          model: "gemini-flash-latest",
+          model: "gemini-3-flash-preview",
         });
 
         const prompt = `
