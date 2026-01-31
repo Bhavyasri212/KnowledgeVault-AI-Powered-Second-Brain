@@ -12,6 +12,7 @@ import {
   Check,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 // 📦 NOTE: To enable Markdown, you would run: npm install react-markdown
 // import ReactMarkdown from "react-markdown";
@@ -55,9 +56,16 @@ export default function ChatPage() {
 
     try {
       // 3. Send the entire history
+      // Get the current session and access token
+      const session = await supabase.auth.getSession();
+      const access_token = session.data?.session?.access_token;
+
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access_token}`,
+        },
         body: JSON.stringify({ messages: newHistory }),
       });
 
